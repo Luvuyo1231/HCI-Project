@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Django App{% endblock %}</title>
+
+    <!-- Bootstrap (Optional) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Inline CSS for therapeutic theme and bouncing box -->
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            background-color: beige; /* Soft beige */
+            color: #2a3f5f; /* Soft blue text */
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        h1, h2, h3 {
+            color: #3e5c76; /* Slightly deeper soft blue */
+        }
+
+        .navbar {
+            background-color: #6c8ea4 !important; /* Soft blue */
+        }
+
+        .navbar-brand, .nav-link {
+            color: black !important;
+        }
+
+        .nav-link:hover {
+            color: #e0f0ff !important; /* Lighter soft blue on hover */
+        }
+
+        .btn-primary {
+            background-color: #6c8ea4;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #5a7a92;
+        }
+
+        .container {
+            flex: 1; /* Pushes the footer to the bottom */
+        }
+
+        /* Logo styling */
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 40px;
+            width: auto;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+       
+        .book-logo {
+            width: 120px;
+            height: 120px;
+            margin: 20px auto;
+            display: block;
+            position: relative;
+        }
+        
+        .book {
+            position: relative;
+            width: 100px;
+            height: 90px;
+            margin: 0 auto;
+        }
+        
+        .book:before, .book:after {
+            position: absolute;
+            content: "";
+            left: 50px;
+            top: 0;
+            width: 50px;
+            height: 80px;
+            background: #ff6b6b;
+            border-radius: 50px 50px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+        
+        
+
+        /* Title bubble style */
+        .title-container {
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .title-bubble {
+            background-color: #f5f5dc; /* Soft beige */
+            padding: 20px 40px;
+            border-radius: 25px;
+            display: inline-block;
+            animation: bounce 2s infinite, colorShift 8s infinite;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+
+        .title-bubble h1 {
+            margin: 0;
+            color: #3e5c76;
+            font-weight: bold;
+            font-size: 2.5rem;
+        }
+
+        /* Start Now button - only on home page */
+        .start-now-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .start-now-btn {
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .start-now-btn .arrow {
+            margin-left: 8px;
+            transition: transform 0.7s ease;
+        }
+        
+        .start-now-btn:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes colorShift {
+            0% {
+                background-color: #f5f5dc;
+            }
+            25% {
+                background-color: #e8f4f8;
+            }
+            50% {
+                background-color: #f0f5e8;
+            }
+            75% {
+                background-color: #f8f0e8;
+            }
+            100% {
+                background-color: #f5f5dc;
+            }
+        }
+
+        /* Updated footer */
+        footer {
+            background-color: #6c8ea4; /* Soft blue */
+            color: #fff;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+        
+        .social-links {
+            margin-top: 0.5rem;
+        }
+        
+        .social-links a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.7s ease;
+        }
+        
+        .social-links a:hover {
+            color: #e0f0ff;
+            transform: scale(1.1);
+        }
+    </style>
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+    <!-- Display messages (success, error, etc.) -->
+    {% if messages %}
+        <div class="alert alert-info">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <!-- Logo - replace with your actual logo path -->
+                <img src="{% static 'images/logo.png' %}" alt="EduGenie" class="logo">
+                EduGenie
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                  
+                    {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">about</a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'contact us' %}">contact us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">logout</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <!-- Welcome Title Bubble -->
+        <div class="title-container">
+            <div class="book-logo">
+                <div class="book">
+                    
+                </div>
+            </div>
+            <div class="title-bubble">
+                <h1>Welcome to EduGenie</h1>
+            </div>
+            
+            {% if request.path == '/' %}
+            <!-- Start Now Button - only shows on home page -->
+            <div class="start-now-container">
+                <a href="{% url 'login' %}" class="btn btn-primary start-now-btn">
+                    Start Now <span class="arrow">&rarr;</span>
+                </a>
+            </div>
+            {% endif %}
+        </div>
+        
+        {% block content %}
+        <!-- Page-specific content goes here -->
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 EduGenie. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    {% block extra_scripts %}{% endblock %}
+        
+

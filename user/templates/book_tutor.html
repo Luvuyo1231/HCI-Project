@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block title %}Book a Tutor - EduGenie{% endblock %}
+
+{% block content %}
+<div class="book-tutor-container">
+    <a href="{% url 'dashboard' %}" class="btn btn-secondary" style="margin-bottom: 20px; display: inline-block;">&larr; Back to Dashboard</a>
+    <h2>Book a Tutor</h2>
+    <p>Fill out the form below to book an online tutor.</p>
+
+    <!-- Available Tutors -->
+    <div class="form-group">
+        <label for="tutor">Available Tutors</label>
+        <select id="tutor" name="tutor" class="form-control" required>
+            <option value="">-- Select a Tutor --</option>
+            <option value="Gift">Gift (ICT)</option>
+            <option value="Justice">Justice (Computer Science)</option>
+            <option value="Katlego">Katlego (ICT)</option>
+            <option value="Khomotso">Khomotso (ICT)</option>
+            <option value="Wanga">Wanga (Computer Science)</option>
+            <option value="Zuzeka">Zuzeka (Computer Science)</option>
+        </select>
+    </div>
+
+    <!-- Form for booking tutor -->
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" class="form-control" required></textarea>
+        </div>
+        <!-- Date and Time Input -->
+        <div class="form-group">
+            <label for="datetime">Preferred Date & Time</label>
+            <input type="datetime-local" id="datetime" name="datetime" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+{% block extra_css %}
+    <style>
+        /* Book Tutor Page Styles */
+        .book-tutor-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-tutor-container h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .book-tutor-container p {
+            text-align: center;
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        button[type="submit"] {
+            background-color: #0056b3;
+            color: white;
+            font-size: 1rem;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #004085;
+        }
+
+        /* Add a little space between the form fields */
+        .form-group:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    </style>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,704 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - EduGenie{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <a href="{% url 'home' %}" class="btn btn-secondary" style="margin-bottom: 20px; display: inline-block;">&larr; Back to home</a>
+    <!-- Header Section -->
+    <div class="header-section">
+        <div class="welcome-text">
+            <h1>Welcome back, {{ user.username }}!</h1>
+            <p class="subtitle">Your personalized learning dashboard</p>
+        </div>
+        <div class="user-avatar">
+            <img src="https://via.placeholder.com/80" alt="User Avatar">
+        </div>
+    </div>
+
+    <!-- Stats Overview Cards -->
+    <div class="stats-container">
+        <div class="stat-card">
+            <div class="stat-icon blue">
+                <i class="fas fa-book"></i>
+            </div>
+            <div class="stat-info">
+                <h3>5</h3>
+                <p>Active Courses</p>
+            </div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-icon green">
+                <i class="fas fa-tasks"></i>
+            </div>
+            <div class="stat-info">
+                <h3>78%</h3>
+                <p>Overall Progress</p>
+            </div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-icon orange">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="stat-info">
+                <h3>3</h3>
+                <p>Upcoming Deadlines</p>
+            </div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-icon purple">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="stat-info">
+                <h3>15</h3>
+                <p>Learning Streak</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Left Column -->
+        <div class="content-column">
+            <!-- Courses Progress Section -->
+            <div class="section-card">
+                <div class="section-header">
+                    <h2>Your Courses</h2>
+                    <a href="#" class="view-all">View All</a>
+                </div>
+                
+                <div class="course-progress">
+                    <div class="course-item">
+                        <div class="course-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="course-details">
+                            <h4>Basics of Programming</h4>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 65%"></div>
+                            </div>
+                            <span class="progress-text">65% Complete</span>
+                        </div>
+                    </div>
+                    
+                    <div class="course-item">
+                        <div class="course-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="course-details">
+                            <h4>Web Development</h4>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 42%"></div>
+                            </div>
+                            <span class="progress-text">42% Complete</span>
+                        </div>
+                    </div>
+                    
+                    <div class="course-item">
+                        <div class="course-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="course-details">
+                            <h4>Machine Learning</h4>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 28%"></div>
+                            </div>
+                            <span class="progress-text">28% Complete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recent Activity Section -->
+            <div class="section-card">
+                <div class="section-header">
+                    <h2>Recent Activity</h2>
+                    <a href="#" class="view-all">View All</a>
+                </div>
+                
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="activity-details">
+                            <p>Completed <strong>Variables & Data Types</strong> in Basics of Programming</p>
+                            <span class="activity-time">2 hours ago</span>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-comment"></i>
+                        </div>
+                        <div class="activity-details">
+                            <p>Posted a question in <strong>Web Development</strong> forum</p>
+                            <span class="activity-time">Yesterday</span>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="activity-details">
+                            <p>Earned <strong>Fast Learner</strong> badge</p>
+                            <span class="activity-time">2 days ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Column -->
+        <div class="content-column">
+            <!-- Upcoming Deadlines Section -->
+            <div class="section-card">
+                <div class="section-header">
+                    <h2>Upcoming Deadlines</h2>
+                    <a href="#" class="view-all">View All</a>
+                </div>
+                
+                <div class="deadline-list">
+                    <div class="deadline-item urgent">
+                        <div class="deadline-icon">
+                            <i class="fas fa-exclamation"></i>
+                        </div>
+                        <div class="deadline-details">
+                            <h4>Assignment: CSS Layouts</h4>
+                            <p>Web Development</p>
+                            <span class="deadline-time">Due tomorrow</span>
+                        </div>
+                    </div>
+                    
+                    <div class="deadline-item">
+                        <div class="deadline-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="deadline-details">
+                            <h4>Quiz: Python Basics</h4>
+                            <p>Basics of Programming</p>
+                            <span class="deadline-time">Due in 3 days</span>
+                        </div>
+                    </div>
+                    
+                    <div class="deadline-item">
+                        <div class="deadline-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <div class="deadline-details">
+                            <h4>Project Proposal</h4>
+                            <p>Machine Learning</p>
+                            <span class="deadline-time">Due next week</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Actions Section -->
+            <div class="section-card">
+                <div class="section-header">
+                    <h2>Quick Actions</h2>
+                </div>
+                
+                <div class="action-buttons">
+                    <a href="#" class="action-button">
+                        <i class="fas fa-plus"></i>
+                        <span>Add New Course</span>
+                    </a>
+                    
+                    <a href="#" class="action-button">
+                        <i class="fas fa-calendar-plus"></i>
+                        <span>Schedule Study Time</span>
+                    </a>
+                    
+                    <a href="#" class="action-button">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Get Help</span>
+                    </a>
+                    
+                    <a href="#" class="action-button">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>View Analytics</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- New "Book Tutor Online" Button -->
+            <a href="{% url 'book_tutor' %}" class="action-button">
+            <i class="fas fa-user-tie"></i>
+            <span>Book Tutor Online</span>
+        </a>
+    </div>
+</div>
+
+            <!-- Progress Chart Section -->
+            <div class="section-card">
+                <div class="section-header">
+                    <h2>Your Progress</h2>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="progressChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block style %}
+<style>
+    :root {
+        --primary-color: #4b7bec;
+        --secondary-color: #3867d6;
+        --accent-color: #fa8231;
+        --light-gray: #f5f6fa;
+        --medium-gray: #d1d8e0;
+        --dark-gray: #778ca3;
+        --text-color: #2f3640;
+        --white: #ffffff;
+        --danger: #eb3b5a;
+        --success: #20bf6b;
+        --warning: #fed330;
+    }
+    
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--text-color);
+        background-color: #f1f3f6;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .dashboard-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    
+    /* Header Section */
+    .header-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+    
+    .welcome-text h1 {
+        font-size: 2rem;
+        margin: 0;
+        color: var(--text-color);
+    }
+    
+    .welcome-text .subtitle {
+        color: var(--dark-gray);
+        margin: 0.5rem 0 0;
+    }
+    
+    .user-avatar img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--white);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Stats Cards */
+    .stats-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .stat-card {
+        background-color: var(--white);
+        border-radius: 10px;
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        color: white;
+        font-size: 1.2rem;
+    }
+    
+    .stat-icon.blue {
+        background-color: var(--primary-color);
+    }
+    
+    .stat-icon.green {
+        background-color: var(--success);
+    }
+    
+    .stat-icon.orange {
+        background-color: var(--accent-color);
+    }
+    
+    .stat-icon.purple {
+        background-color: #8854d0;
+    }
+    
+    .stat-info h3 {
+        margin: 0;
+        font-size: 1.5rem;
+    }
+    
+    .stat-info p {
+        margin: 0.25rem 0 0;
+        color: var(--dark-gray);
+        font-size: 0.9rem;
+    }
+    
+    /* Main Content Layout */
+    .main-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+    
+    @media (max-width: 768px) {
+        .main-content {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    /* Section Cards */
+    .section-card {
+        background-color: var(--white);
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .section-header h2 {
+        margin: 0;
+        font-size: 1.25rem;
+    }
+    
+    .view-all {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+    
+    .view-all:hover {
+        text-decoration: underline;
+    }
+    
+    /* Course Progress Items */
+    .course-progress {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .course-item {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 0;
+    }
+    
+    .course-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--light-gray);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        color: var(--primary-color);
+    }
+    
+    .course-details {
+        flex: 1;
+    }
+    
+    .course-details h4 {
+        margin: 0 0 0.5rem;
+        font-size: 1rem;
+    }
+    
+    .progress-container {
+        width: 100%;
+        height: 8px;
+        background-color: var(--light-gray);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 0.25rem;
+    }
+    
+    .progress-bar {
+        height: 100%;
+        background-color: var(--primary-color);
+        border-radius: 4px;
+    }
+    
+    .progress-text {
+        font-size: 0.8rem;
+        color: var(--dark-gray);
+    }
+    
+    /* Activity List */
+    .activity-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .activity-item {
+        display: flex;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--light-gray);
+    }
+    
+    .activity-item:last-child {
+        border-bottom: none;
+    }
+    
+    .activity-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--light-gray);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        color: var(--primary-color);
+    }
+    
+    .activity-details {
+        flex: 1;
+    }
+    
+    .activity-details p {
+        margin: 0 0 0.25rem;
+        font-size: 0.9rem;
+    }
+    
+    .activity-time {
+        font-size: 0.75rem;
+        color: var(--dark-gray);
+    }
+    
+    /* Deadline List */
+    .deadline-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .deadline-item {
+        display: flex;
+        padding: 1rem;
+        border-radius: 8px;
+        background-color: var(--light-gray);
+    }
+    
+    .deadline-item.urgent {
+        background-color: rgba(235, 59, 90, 0.1);
+        border-left: 3px solid var(--danger);
+    }
+    
+    .deadline-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+    }
+    
+    .deadline-item.urgent .deadline-icon {
+        color: var(--danger);
+    }
+    
+    .deadline-details {
+        flex: 1;
+    }
+    
+    .deadline-details h4 {
+        margin: 0 0 0.25rem;
+        font-size: 1rem;
+    }
+    
+    .deadline-details p {
+        margin: 0 0 0.25rem;
+        font-size: 0.85rem;
+        color: var(--dark-gray);
+    }
+    
+    .deadline-time {
+        font-size: 0.75rem;
+        color: var(--dark-gray);
+    }
+    
+    /* Quick Actions */
+    .action-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    
+    .action-button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem 0.5rem;
+        background-color: var(--light-gray);
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--text-color);
+        transition: background-color 0.3s ease;
+    }
+    
+    .action-button:hover {
+        background-color: var(--medium-gray);
+    }
+    
+    .action-button i {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary-color);
+    }
+    
+    .action-button span {
+        font-size: 0.85rem;
+        text-align: center;
+    }
+    
+    /* Chart Container */
+    .chart-container {
+        width: 100%;
+        height: 250px;
+    }
+    /* Quick Action Button */
+.action-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    margin: 8px 0;
+    background-color: slategray;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.action-button:hover {
+    background-color: skyblue;
+}
+
+.action-button i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.action-button span {
+    font-weight: bold;
+}
+
+</style>
+{% endblock %}
+
+{% block scripts %}
+<!-- Include Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Include Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script>
+    // Progress Chart
+    var ctx = document.getElementById('progressChart').getContext('2d');
+    var progressChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+            datasets: [{
+                label: 'Learning Progress',
+                data: [20, 35, 45, 50, 60, 70, 78],
+                borderColor: '#4b7bec',
+                backgroundColor: 'rgba(75, 123, 236, 0.1)',
+                fill: true,
+                tension: 0.4,
+                borderWidth: 2,
+                pointBackgroundColor: '#4b7bec',
+                pointRadius: 4,
+                pointHoverRadius: 6
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: '#2f3640',
+                    titleFont: {
+                        size: 14
+                    },
+                    bodyFont: {
+                        size: 12
+                    },
+                    padding: 12,
+                    cornerRadius: 8
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    },
+                    ticks: {
+                        stepSize: 20
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}
+{% endblock %}

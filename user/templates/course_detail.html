@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ course.title }} - EduGenie{% endblock %}
+
+{% block content %}
+<!-- Course Detail Section -->
+<section class="course-detail py-5">
+    <div class="container">
+        <h2 class="course-title">{{ course.title }}</h2>
+        <img src="{{ course.image_url }}" alt="{{ course.title }}" class="img-fluid mb-4 course-image">
+        <p class="course-description">{{ course.description }}</p>
+        <p><strong>Price:</strong> ${{ course.price }}</p>
+        <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
+    </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="text-center py-4 bg-dark text-white">
+    <p>&copy; 2025 EduGenie. All rights reserved.</p>
+</footer>
+
+{% block extra_head %}
+<style>
+    /* Course Detail Section */
+    .course-detail {
+        background-color: #f9f9f9;
+    }
+
+    .course-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    .course-image {
+        max-width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .course-description {
+        font-size: 1.1rem;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Back Button Styling */
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        padding: 10px 20px;
+        font-size: 1.1rem;
+        border-radius: 5px;
+        text-transform: uppercase;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+
+    /* Footer Styling */
+    footer {
+        background-color: #343a40;
+        padding: 2rem 0;
+    }
+
+    footer p {
+        margin: 0;
+        color: #f1f1f1;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+        .course-title {
+            font-size: 2rem;
+        }
+
+        .course-description {
+            font-size: 1rem;
+        }
+
+        .btn-secondary {
+            font-size: 1rem;
+            padding: 8px 16px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% endblock %}

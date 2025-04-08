@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - EduGenie{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section text-center py-5">
+    <div class="container">
+        <h2>Hi {{ user.username }}, Welcome to EduGenie!</h2>
+        <p>Your one-stop platform for learning and growth.</p>
+    </div>
+</section>
+
+<!-- Featured Courses Section -->
+<section class="featured-courses py-5 bg-light">
+    <div class="container">
+        <h3 class="text-center mb-4">Featured Courses</h3>
+        <div class="row">
+            <!-- Course 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/350x200/ff7f50/ffffff?text=Course+1" class="card-img-top" alt="Course 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Course 1: Basics of Programming</h5>
+                        <p class="card-text">Explore the basics of programming and become a software development expert.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/350x200/ff7f50/ffffff?text=Course+2" class="card-img-top" alt="Course 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Course 2: Web Development</h5>
+                        <p class="card-text">Master web development with this comprehensive course for beginners.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/350x200/ff7f50/ffffff?text=Course+3" class="card-img-top" alt="Course 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Course 3: Machine Learning</h5>
+                        <p class="card-text">Delve into machine learning and AI concepts with this beginner-friendly course.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta-section text-center py-5 bg-primary text-white">
+    <div class="container">
+        <h3>Ready to start your learning journey?</h3>
+        <p>Join EduGenie today and unlock your full potential with our wide range of online courses.</p>
+        <a href="{% url 'signup' %}" class="btn btn-light">Sign Up Now</a>
+    </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="text-center py-4 bg-dark text-white">
+    <p>&copy; 2025 EduGenie. All rights reserved.</p>
+    <div class="social-links">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+</footer>
+
+{% endblock %}
+
+{% block extra_head %}
+<!-- Add any additional CSS for specific pages -->
+<style>
+    .hero-section {
+        background-image: url('https://bookbub-res.cloudinary.com/image/upload/ar_2.39,c_fill,g_auto,w_1480/v1701984989/blog/where-to-download-free-pdf-books.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color: white;
+        border-bottom: 2px solid #ddd;
+    }
+
+    .cta-section {
+        background-color: #4caf50;
+        color: #fff;
+        border-top: 2px solid #ddd;
+    }
+
+    .featured-courses .card {
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .featured-courses .card img {
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .featured-courses .card-title {
+        font-weight: bold;
+    }
+
+    .social-links a {
+        color: #fff;
+        margin: 0 10px;
+        font-size: 1.5rem;
+        transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+        color: #4caf50;
+    }
+
+    @media (max-width: 768px) {
+        .featured-courses .col-md-4 {
+            margin-bottom: 2rem;
+        }
+    }
+</style>
+{% endblock %}
